@@ -2,18 +2,18 @@
 An elliptic curve is defined as
 $$y^2 = x^3 + ax + b$$
 where $a, b \in K$ and $4a^3 + 27b^3 \neq 0$ or $-16(4a^3 + 27b^3) \neq 0$. It has an abelian group structure
-$$E(K)=\{\;(x,y)\in K\times K:y^2=x^3+ax+b\;\}\; \cup \; \mathcal{O}$$
+$$E(K)=\{(x,y)\in K\times K:y^2=x^3+ax+b\} \cup  \mathcal{O}$$
 $K$ is a finite field $\mathbb{F}_p$ where $p$ is a prime number with $p > 3$. $\mathcal{O}$ Can be thought of as the point at infinity.
 
 ## Elliptic curve addition algorithm
-Let $E$ be an elliptic curve over $\mathbb{F_p}$. Given two points $P,\;Q \in E$ compute the third point $R = P + Q \in E$.
+Let $E$ be an elliptic curve over $\mathbb{F_p}$. Given two points $P,Q \in E$ compute the third point $R = P + Q \in E$.
 1. If $P = \mathcal{O}$ set $R = Q$ or if $Q = \mathcal{O}$ set $R=P$ and return $R$.
 2. If $P_x = Q_x$ and $P_y=-Q_y$ set $R=\mathcal{O}$ and return $R$.
 3. Otherwise define $\lambda$ by 
 $$
 \lambda=
 \begin{cases}
-\frac{Q_y-P_y}{Q_x-P_x} & \text{if } P \neq Q\\\\
+\frac{Q_y-P_y}{Q_x-P_x} & \text{if } P \neq Q\\
 \frac{3P_x^2+a}{2P_y} & \text{if } P = Q\\
 \end{cases}
 $$
@@ -25,10 +25,10 @@ Then $P+Q=(x,y)=R \in E$.
 
 Because $E$ is defined over a finite field $\mathbb{F_p}$ division in the traditional sense is not possible and should instead be done by multiplying with the modular inverse.
 
-Ferma's little theorem tells us that if $p \in \mathbb{N}$ is prime and $x\in\mathbb{N}$ is such that $(x,\;y)=1$ then $x^{p-1} \equiv 1$ mod $p$.
+Ferma's little theorem tells us that if $p \in \mathbb{N}$ is prime and $x\in\mathbb{N}$ is such that $(x,y)=1$ then $x^{p-1} \equiv 1$ mod $p$.
 
-Collary if $p\in\mathbb{N}$ is prime and $x\in\mathbb{N}$ is such that $(x,\;y)\equiv 1$ then the mod $p$ inverse of $x$ is
-$$x^{-1}\equiv x^{p-1} \quad \text{mod} \;p$$
+Collary if $p\in\mathbb{N}$ is prime and $x\in\mathbb{N}$ is such that $(x,y)\equiv 1$ then the mod $p$ inverse of $x$ is
+$$x^{-1}\equiv x^{p-1} \quad \text{mod} p$$
 
 ```python
 def inverse_modp(x, p):
@@ -51,15 +51,15 @@ However if $k$ is large this becomes computationally impossible. Thus we can imp
 <b>The double and add algorithm</b>
 
 Write $k$ in its binary form
-$$k=\sum_{i=0}^{m}b_i2^{i} \quad \text{where}\; b_i \in \{0,\;1\}$$
+$$k=\sum_{i=0}^{m}b_i2^{i} \quad \text{where} b_i \in \{0,1\}$$
 Then because of the associativity of the group operation
 $$kP=\sum_{i=0}^{m}b_i2^{i}P$$
 Define
-$$x_i=2^iP\quad\text{for}\;i\geq 0$$
+$$x_i=2^iP\quad\text{for}i\geq 0$$
 We have then
 $$kP=\sum_{i=0}^{m}b_ix_i$$
-Since $b_i\in\{0,\;1\}$ we can write this as
-$$kP=\sum \{i:b_i=1\}\;x_i$$
+Since $b_i\in\{0,1\}$ we can write this as
+$$kP=\sum \{i:b_i=1\}x_i$$
 In python
 ```python
 def multiply_point(k, P):
