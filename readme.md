@@ -11,8 +11,13 @@ Let $E$ be an elliptic curve over $\mathbb{F_p}$. Given two points $P,Q \in E$ c
 2. If $P_x = Q_x$ and $P_y=-Q_y$ set $R=\mathcal{O}$ and return $R$.
 3. Otherwise define $\lambda$ by 
 
-$$\lambda= \frac{Q_y-P_y}{Q_x-P_x} \; \text{ if } \; P \neq Q$$
-$$\lambda= \frac{3P_x^2+a}{2P_y} \; \text{ if } \; P = Q$$
+$$
+\lambda= \frac{Q_y-P_y}{Q_x-P_x} \; \text{ if } \; P \neq Q
+$$
+or
+$$
+\lambda= \frac{3P_x^2+a}{2P_y} \; \text{ if } \; P = Q
+$$
 
 and let
 $$x=\lambda ^2 - P_x - Q_x \quad \text{and} \quad y=\lambda(P_x-x)-P_y$$
