@@ -7,14 +7,15 @@ $K$ is a finite field $\mathbb{F}_p$ where $p$ is a prime number with $p > 3$. $
 
 ## Elliptic curve addition algorithm
 Let $E$ be an elliptic curve over $\mathbb{F_p}$. Given two points $P,Q \in E$ compute the third point $R = P + Q \in E$.
+Elliptic curve addition is done by taking two points, drawing a line through the two point and calculating a third point where the line intersects the elliptic curve and reflecting it over the $x$-axis.
 1. If $P = \mathcal{O}$ set $R = Q$ or if $Q = \mathcal{O}$ set $R=P$ and return $R$.
 2. If $P_x = Q_x$ and $P_y=-Q_y$ set $R=\mathcal{O}$ and return $R$.
-3. Otherwise define $\lambda$ by 
+3. Otherwise, if $P \neq Q$ define $\lambda$ by 
 
 $$
-\lambda= \frac{Q_y-P_y}{Q_x-P_x} \; \text{ if } \; P \neq Q
+\lambda= \frac{Q_y-P_y}{Q_x-P_x}
 $$
-or
+Else if $P = Q$, then $\lambda$ will be the tangent line of the point
 $$
 \lambda= \frac{3P_x^2+a}{2P_y} \; \text{ if } \; P = Q
 $$
