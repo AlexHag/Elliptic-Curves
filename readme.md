@@ -15,7 +15,11 @@ Elliptic curve addition is done by taking two points, drawing a line through the
 $$
 \lambda= \frac{Q_y-P_y}{Q_x-P_x}
 $$
+
+Github is acting up here and won't show the correct equation. Look at the raw readme if this doesn't make sense.
+
 Else if $P = Q$, then $\lambda$ will be the tangent line of the point
+
 $$
 \lambda= \frac{3P_x^2+a}{2P_y} \; \text{ if } \; P = Q
 $$
